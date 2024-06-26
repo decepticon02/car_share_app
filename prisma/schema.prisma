@@ -10,7 +10,7 @@ datasource db {
 }
 
 
-model Putnik {
+model putnik {
 	id Int @id @default(autoincrement())
 	Email String @unique
 	Password String
@@ -27,20 +27,19 @@ model usr{
 	Password String
 	username String
 	admin_check Boolean @default(false)
-	voznje Voznja[]
+	voznje voznja[]
 
 }
 
-model Voznja{
+model voznja{
 	id Int @id @default(autoincrement())
-	usrId Int
+	usrId Int 
 	vozac usr @relation(fields: [usrId], references: [id])
 	pocetna_destinacija String
 	krajnja_destinacija String 
 	mesto_polaska String
 	Broj_mesta Int
-	Vreme_polaska DateTime
-	Datum_polaska DateTime
+	Datum_i_vreme_polaska DateTime
 	Cena Float
 
 }

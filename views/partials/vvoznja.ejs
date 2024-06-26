@@ -1,24 +1,62 @@
-<div class="card mt-4">
-    <div class="card-body">
-      <h5 class="card-title">Београд-Рашка </h5>
-      <p class="card-text">
-        Датум поласка: 18.06.2024.
-       </p>
-      <p class="card-text">
-       Време поласка: 18:00
-      </p>
-      <p class="card-text">
-        Mесто поласка: аутокоманда
-       </p>
-       <p class="card-text">
-        Број слободних места је: 2
-       </p>
-       <p class="card-text">
-        Цена по особи је: 700 динара 
-       </p>
-      <form class="form-inline">
-        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" >Измени време поласка</button>
-        <button class="btn btn-outline-success" type="button">Откажи вожњу</button>
-      </form>
+<div class="container mt-4">
+  <% voznje.forEach(voznja => { %>
+  <div class="card mt-4" id="card-<%= voznja.id %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= voznja.pocetna_destinacija %> - <%= voznja.krajnja_destinacija %></h5>
+        <p class="card-text">
+          Датум и време поласка: <%= voznja.Datum_i_vreme_polaska.toDateString() %>
+         </p>
+        
+        <p class="card-text">
+          Mесто поласка: <%= voznja.mesto_polaska %>
+         </p>
+         <p class="card-text">
+          Број слободних места је: <%= voznja.Broj_mesta %>
+         </p>
+         <p class="card-text">
+          Цена по особи је: <%= voznja.Cena %> динара 
+         </p>
+        <form class="form-inline">
+          <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">Измени време поласка</button>
+          <button class="btn btn-outline-success" type="button">Откажи вожњу</button>
+        </form>
+      </div>
     </div>
+  <% }) %>
+</div>
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Измена времена поласка</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="/update-voznja" method="POST">
+                  <input type="hidden" id="voznjaId" name="voznjaId" value="">
+                  <div class="row">
+                      <div class="col">
+                          <label for="date">Унесите датум поласка</label>
+                          <input type="date" id="date" name="departureDate" required>
+                      </div>
+                      <div class="col">
+                          <label for="time">Унесите време поласка</label>
+                          <input type="time" id="time" name="departureTime" required>
+                      </div>
+                  </div>
+                  <br>
+                  <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-voznja-id="1" onclick="setVoznjaId(this)">Измени време поласка</button>
+
+              </form>
+          </div>
+      </div>
   </div>
+</div>
+
+<script>
+  function setVoznjaId(id) {
+      document.getElementById('voznjaId').value = id;
+  }
+</script>
