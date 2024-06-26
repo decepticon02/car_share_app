@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head.ejs') %> 
+        <link rel="stylesheet" href="css/aplikacija.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(133, 235, 235);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Путник</a>
+                    <div class="d-flex flex-grow-1">
+                        <form class="d-flex me-auto">
+                            <div class="form-group">
+                           
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Претрага по почетној дестинацији</option>
+                              <option>Претрага по крајњој дестинацији</option>
+                              <option>Претрага по возачу</option>
+                            </select>
+                            </div>
+                        </form>
+
+                        <form class="d-flex me-auto">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Измена профила</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Одјава</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br>
+        <br>
+        <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Београд-Рашка </h5>
+              <p class="card-text">
+                Возач: Никола Даниловић
+               </p>
+              <p class="card-text">
+                Датум поласка: 18.06.2024.
+               </p>
+              <p class="card-text">
+               Време поласка: 18:00
+              </p>
+              <p class="card-text">
+                Mесто поласка: аутокоманда
+               </p>
+               <p class="card-text">
+                Број слободних места је: 2
+               </p>
+               <p class="card-text">
+                Цена по особи је: 700 динара 
+               </p>
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button">Пријави се за вожњу</button>
+                <button class="btn btn-outline-success" type="button">Одјави се од вожње</button>
+              </form>
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Београд-Рашка </h5>
+              <p class="card-text">
+                Возач: Никола Даниловић
+               </p>
+              <p class="card-text">
+                Датум поласка: 18.06.2024.
+               </p>
+              <p class="card-text">
+               Време поласка: 18:00
+              </p>
+              <p class="card-text">
+                Mесто поласка: аутокоманда
+               </p>
+               <p class="card-text">
+                Број слободних места је: 2
+               </p>
+               <p class="card-text">
+                Цена по особи је: 700 динара 
+               </p>
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button">Пријави се за вожњу</button>
+                <button class="btn btn-outline-success" type="button">Одјави се од вожње</button>
+              </form>
+            </div>
+          </div>
+        
+            
+
+    </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head.ejs') %> 
+        <link rel="stylesheet" href="css/aplikacija.css">
+    </head>
+    <body>
+        <header>
+            
+          <nav class="navbar navbar-light" style="background-color: rgb(133, 235, 235);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Возач</a>
+                    <form class="form-inline">
+                        
+                        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal" data-bs-toggle="modal" >Додај вожњу</button>
+                        <button class="btn btn-outline-success" type="button">Одјава</button>
+                      </form>
+                </div>
+            </nav>
+           
+        </header>
+        <br>
+        <br>
+        <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Београд-Рашка </h5>
+              <p class="card-text">
+                Датум поласка: 18.06.2024.
+               </p>
+              <p class="card-text">
+               Време поласка: 18:00
+              </p>
+              <p class="card-text">
+                Mесто поласка: аутокоманда
+               </p>
+               <p class="card-text">
+                Број слободних места је: 2
+               </p>
+               <p class="card-text">
+                Цена по особи је: 700 динара 
+               </p>
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" >Измени време поласка</button>
+                <button class="btn btn-outline-success" type="button">Откажи вожњу</button>
+              </form>
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Београд-Рашка </h5>
+              <p class="card-text">
+                Датум поласка: 18.06.2024.
+               </p>
+              <p class="card-text">
+               Време поласка: 18:00
+              </p>
+              <p class="card-text">
+                Mесто поласка: аутокоманда
+               </p>
+               <p class="card-text">
+                Број слободних места је: 2
+               </p>
+               <p class="card-text">
+                Цена по особи је: 700 динара 
+               </p>
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" >Измени време поласка</button>
+                <button class="btn btn-outline-success" type="button">Откажи вожњу</button>
+              </form>
+            </div>
+          </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Додавање нове вожње</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <form>
+                              <div class="row">
+
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="Почетна дестинација">
+                                  </div>
+
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="Крајња дестинација">
+                                  </div>
+
+                              </div>
+                            </form>
+
+                            <div class="form-group">
+                                  <br>
+                                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Место поласка">
+                            </div>
+
+                            
+
+                            <div class="form-group">
+                              <br>
+                              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Цена по особи (дин)">
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Одаберите број слободних места</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                            </div>
+
+                            <br>
+
+                            <form>
+                              <div class="row">
+
+                                 <div class="col">
+                                    <label for="date">Унесите датум поласка</label>
+                                    <input type="date" id="date">
+                                 </div>
+
+                                 <div class="col">
+                                    <label for="time">Унесите време поласка</label>
+                                    <input type="time" id="time">
+                                 </div>
+
+                              </div>
+                         
+
+                            </form>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Додај</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Измена времена поласка</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <form>
+                            
+                            <div class="row">
+
+                               <div class="col">
+                                  <label for="date">Унесите датум поласка</label>
+                                  <input type="date" id="date">
+                               </div>
+
+                               <div class="col">
+                                  <label for="time">Унесите време поласка</label>
+                                  <input type="time" id="time">
+                               </div>
+
+                            </div>
+                       
+
+                          </form>
+                          <br>
+                          <button type="submit" class="btn btn-primary">Измени</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+     
+
+    </div>
+
+
+
+    </body>
+</html>
