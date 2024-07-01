@@ -1,29 +1,55 @@
 <div class="container mt-4">
-  <% voznje.forEach(voznja => { %>
+  <% voznje.forEach(function(voznja) { %>
   <div class="card mt-4" id="card-<%= voznja.id %>">
-      <div class="card-body">
-        <h5 class="card-title"><%= voznja.pocetna_destinacija %> - <%= voznja.krajnja_destinacija %></h5>
-        <p class="card-text">
-          Датум и време поласка: <%= voznja.Datum_i_vreme_polaska.toDateString() %>
-         </p>
-        
-        <p class="card-text">
-          Mесто поласка: <%= voznja.mesto_polaska %>
-         </p>
-         <p class="card-text">
-          Број слободних места је: <%= voznja.Broj_mesta %>
-         </p>
-         <p class="card-text">
-          Цена по особи је: <%= voznja.Cena %> динара 
-         </p>
-        <form class="form-inline">
-          <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">Измени време поласка</button>
-          <button class="btn btn-outline-success" type="button">Откажи вожњу</button>
-        </form>
-      </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= voznja.pocetna_destinacija %> - <%= voznja.krajnja_destinacija %></h5>
+      <p class="card-text">
+        Датум и време поласка: <%= voznja.Datum_i_vreme_polaska.toDateString() %>
+      </p>
+      <p class="card-text">
+        Mесто поласка: <%= voznja.mesto_polaska %>
+      </p>
+      <p class="card-text">
+        Број слободних места је: <%= voznja.Broj_mesta %>
+      </p>
+      <p class="card-text">
+        Цена по особи је: <%= voznja.Cena %> динара 
+      </p>
+      <form class="form-inline">
+        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" data-voznja-id="<%= voznja.id %>" onclick="setFormAction(this)">Измени време поласка</button>
+        <button class="btn btn-outline-danger" type="button" onclick="deleteVoznja(<%= voznja.id %>)">Откажи вожњу</button>
+      </form>
     </div>
+  </div>
   <% }) %>
 </div>
+
+<script>
+function setFormAction(button) {
+  var voznjaId = button.getAttribute('data-voznja-id');
+  var form = document.getElementById('updatevoznja');
+  form.action = '/update-voznja?voznja_id=' + voznjaId;
+}
+  function deleteVoznja(voznjaId) {
+    if (confirm('Jeste li sigurni da zelite da otkazete voznju?')) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('DELETE', '/delete-voznja/' + voznjaId, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var result = JSON.parse(xhr.responseText);
+          if (result.success) {
+            var card = document.getElementById('card-' + voznjaId);
+            card.parentNode.removeChild(card);
+          } else {
+            alert('Failed to delete voznja. Please try again.');
+          }
+        }
+      };
+      xhr.send();
+    }
+  }
+</script>
 
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -34,7 +60,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <form action="/update-voznja" method="POST">
+              <form id="updatevoznja" method="POST">
                   <input type="hidden" id="voznjaId" name="voznjaId" value="">
                   <div class="row">
                       <div class="col">
@@ -47,7 +73,7 @@
                       </div>
                   </div>
                   <br>
-                  <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-voznja-id="1" onclick="setVoznjaId(this)">Измени време поласка</button>
+                  <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-voznja-id="1">Измени време поласка</button>
 
               </form>
           </div>

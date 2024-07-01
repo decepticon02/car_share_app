@@ -1,0 +1,29 @@
+<div class="container mt-4"></div>
+<% putnici.forEach(function(putnik) { %>
+<div class="card mt-4" id="card-<%= putnik.id%>">
+    <div class="card-body">
+      <h5 class="card-title"> Email: <%=putnik.Email%> </h5>
+      <p class="card-text">
+        Ime: <%=putnik.ime%>
+       </p>
+       <p class="card-text">
+        Prezime: <%=putnik.prezime%>
+       </p>
+       <p class="card-text">
+        Broj_telefona: <%=putnik.broj_telefona%>
+       </p>
+       <p class="card-text">
+        Prebivaliste: <%=putnik.prebivaliste%>
+       </p>
+      <p class="card-text">
+        Password: <%=putnik.Password%>
+       </p>
+      
+      <form class="form-inline">
+        <button class="btn btn-outline-success" type="button">Измени корисника</button>
+        <button class="btn btn-outline-success" type="button">Обриши корисника</button>
+      </form>
+    </div>
+</div>
+<% }) %>
+</div>

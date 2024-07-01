@@ -12,20 +12,25 @@
                     <a class="navbar-brand" href="#">Админ</a>
                     <div class="d-flex flex-grow-1">
                         <form class="d-flex me-auto">
-                            <div class="form-group">
-                           
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Возачи</option>
-                              <option>Путници</option>
-                              
-                            </select>
-                            </div>
+                            
+                            
+                                <form class="form-inline">
+
+                                    <form action="/odabir_vozaci" method="GET">
+                                        <button class="btn btn-outline-success" type="submit">Возачи</button>
+                                    </form>
+
+                                    <form action="/odabir_putnici" method="GET">
+                                        <button class="btn btn-outline-success" type="submit">Путници</button>
+                                    </form>
+    
+                                  </form>
+
+                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                  <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
 
-                        <form class="d-flex me-auto">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                       
                         
 
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +40,10 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Додај корисника</a>
+                                <button class="btn btn-outline-success" type="button" data-bs-target="#addVozacModal" data-bs-toggle="modal" >Додај возача</button>
+                            </li>
+                            <li class="nav-item active">
+                                <button class="btn btn-outline-success" type="button" data-bs-target="#addPutnikModal" data-bs-toggle="modal" >Додај путника</button>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Одјава</a>
@@ -46,21 +54,98 @@
             </nav>
         </header>
     
-        <div class="card mt-4">
-            <div class="card-body">
-              <h5 class="card-title">Никола Даниловић </h5>
-              <p class="card-text">
-                Email: danilovicn5@gmail.com
-               </p>
-              <p class="card-text">
-                Password: sifra123
-               </p>
-              
-              <form class="form-inline">
-                <button class="btn btn-outline-success" type="button">Измени корисника</button>
-                <button class="btn btn-outline-success" type="button">Обриши корисника</button>
-              </form>
+        
+
+
+
+
+        <div class="modal fade" id="addVozacModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Додавање новог возача</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/add-vozac" method="POST">
+                        
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="Email возача" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="usrname" class="form-control" placeholder="Корисничко име возача" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="password" class="form-control" placeholder="Шифра возача" required>
+                        </div>
+                        <br>
+
+                        
+                        <button type="submit" class="btn btn-primary">Додај</button>
+                    </form>
+                </div>
+            </div>
+            
             </div>
         </div>
+
+
+        <div class="modal fade" id="addPutnikModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Додавање новог путника</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/add-putnik" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="ime" class="form-control" placeholder="Име" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="prezime" class="form-control" placeholder="Презиме" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="br_telefona" class="form-control" placeholder="Број телефона" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="prebivaliste" class="form-control" placeholder="Пребивалиште" required>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <input type="text" name="password" class="form-control" placeholder="Шифра" required>
+                        </div>
+                        <br>
+
+                        
+                        <button type="submit" class="btn btn-primary">Додај</button>
+                    </form>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+
+        
+        
+
+
+
     </body>
 </html>
