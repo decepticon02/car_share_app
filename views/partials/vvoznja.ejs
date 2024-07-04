@@ -1,4 +1,6 @@
 <div class="container mt-4">
+
+  <% if (voznje && voznje.length > 0) { %>
   <% voznje.forEach(function(voznja) { %>
   <div class="card mt-4" id="card-<%= voznja.id %>">
     <div class="card-body">
@@ -16,21 +18,25 @@
         Цена по особи је: <%= voznja.Cena %> динара 
       </p>
       <form class="form-inline">
-        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" data-voznja-id="<%= voznja.id %>" onclick="setFormAction(this)">Измени време поласка</button>
-        <button class="btn btn-outline-danger" type="button" onclick="deleteVoznja(<%= voznja.id %>)">Откажи вожњу</button>
+        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal" data-voznja-id="<%= voznja.id %>" onclick="setFormAction(this,<%= userid %>)">Измени време поласка</button>
+        <button class="btn btn-outline-danger" type="button" onclick="deleteVoznja(<%= voznja.id %>,<%= userid %>)">Откажи вожњу</button>
       </form>
     </div>
   </div>
   <% }) %>
+  <% } else { %>
+    <p>Nema dostupnih vožnji.</p>
+  <% } %>
 </div>
 
 <script>
-function setFormAction(button) {
+function setFormAction(button,usrid) {
   var voznjaId = button.getAttribute('data-voznja-id');
   var form = document.getElementById('updatevoznja');
-  form.action = '/update-voznja?voznja_id=' + voznjaId;
+  console.log("Usrid ",usrid)
+  form.action = '/update-voznja?voznja_id=' + voznjaId + '&userId=' + usrid;
 }
-  function deleteVoznja(voznjaId) {
+  function deleteVoznja(voznjaId,usrid) {
     if (confirm('Jeste li sigurni da zelite da otkazete voznju?')) {
       var xhr = new XMLHttpRequest();
       xhr.open('DELETE', '/delete-voznja/' + voznjaId, true);

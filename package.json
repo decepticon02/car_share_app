@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/register": "^7.24.6",
     "@prisma/client": "^5.15.1",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
     "deep-email-validator": "^0.1.21",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
@@ -22,6 +27,9 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
-    "razorpay": "^2.9.4"
+    "razorpay": "^2.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "validator": "^13.12.0"
   }
 }

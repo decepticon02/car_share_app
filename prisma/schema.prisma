@@ -13,12 +13,14 @@ datasource db {
 model putnik {
 	id Int @id @default(autoincrement())
 	Email String @unique
+	email_verified Boolean @default(false)
 	Password String
 	ime String 
 	prezime String
 	broj_telefona String 
 	prebivaliste String 
-	
+	email_ver Boolean @default(false)
+	email_code String @unique
 }
 
 model usr{
@@ -27,7 +29,7 @@ model usr{
 	Password String
 	username String @unique
 	admin_check Boolean @default(false)
-	voznje voznja[]
+	
 
 }
 

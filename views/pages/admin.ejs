@@ -11,10 +11,9 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Админ</a>
                     <div class="d-flex flex-grow-1">
-                        <form class="d-flex me-auto">
                             
                             
-                                <form class="form-inline">
+                    <div class="btn-group" role="group" aria-label="Actions">
 
                                     <form action="/odabir_vozaci" method="GET">
                                         <button class="btn btn-outline-success" type="submit">Возачи</button>
@@ -24,11 +23,10 @@
                                         <button class="btn btn-outline-success" type="submit">Путници</button>
                                     </form>
     
-                                  </form>
-
+                    </div>
                                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                   <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                    
 
                        
                         
@@ -46,7 +44,7 @@
                                 <button class="btn btn-outline-success" type="button" data-bs-target="#addPutnikModal" data-bs-toggle="modal" >Додај путника</button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Одјава</a>
+                                <a class="nav-link" href="/logoutva">Одјава</a>
                             </li>
                         </ul>
                     </div>
@@ -56,7 +54,23 @@
     
         
 
+        <div class="container mt-4">
+            <% if (vozaci && vozaci.length > 0) { %>
+            <h3>Списак возача</h3>
+            <ul>
+               <%- include('../partials/a_vozac.ejs') %> 
 
+            </ul>
+            <% } else if (putnici && putnici.length > 0) { %>
+            <h3>Списак путника</h3>
+            <ul>
+                    <%- include('../partials/a_putnik.ejs') %> 
+            </ul>
+            <% } else { %>
+            <p>Nema dostupnih podataka.</p>
+            <% } %>
+        </div>
+        
 
 
         <div class="modal fade" id="addVozacModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

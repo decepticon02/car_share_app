@@ -1,6 +1,6 @@
 <div class="container mt-4"></div>
 <% putnici.forEach(function(putnik) { %>
-<div class="card mt-4" id="card-<%= putnik.id%>">
+<div class="card mt-4" id="card-<%= putnik.id %>">
     <div class="card-body">
       <h5 class="card-title"> Email: <%=putnik.Email%> </h5>
       <p class="card-text">
@@ -19,10 +19,15 @@
         Password: <%=putnik.Password%>
        </p>
       
-      <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Измени корисника</button>
-        <button class="btn btn-outline-success" type="button">Обриши корисника</button>
+       <div class="btn-group" role="group" aria-label="Actions">
+       <form class="form-inline" action="/izmeni-putnika/<%= putnik.id %>" method="POST">
+        <button class="btn btn-outline-success" type="submit">Измени корисника</button>
       </form>
+
+      <form class="form-inline" action="/obrisi-putnika/<%= putnik.id %>" method="POST">
+        <button class="btn btn-outline-success" type="submit">Обриши корисника</button>
+      </form>
+       </div>
     </div>
 </div>
 <% }) %>

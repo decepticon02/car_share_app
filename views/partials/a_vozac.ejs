@@ -2,7 +2,7 @@
 <% vozaci.forEach(function(usr) { %>
 <div class="card mt-4" id="card-<%= usr.id%>">
     <div class="card-body">
-      <h5 class="card-title">Username: <%= usr.usrname></h5>
+      <h5 class="card-title">Username: <%= usr.username%></h5>
       <p class="card-text">
         Email: <%=usr.Email%>
        </p>
@@ -10,10 +10,17 @@
         Password: <%=usr.Password%>
        </p>
       
-      <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Измени корисника</button>
-        <button class="btn btn-outline-success" type="button">Обриши корисника</button>
+
+       <div class="btn-group" role="group" aria-label="Actions">
+       <form class="form-inline" action="/izmeni-vozaca/<%= usr.id %>" method="POST">
+        <button class="btn btn-outline-success" type="submit">Измени корисника</button>
       </form>
+
+     <!-- <form class="form-inline" action="/obrisi-vozaca/<%= usr.id %>" method="POST">
+        <button class="btn btn-outline-success" type="submit">Обриши корисника</button>
+      </form>
+       </div>
+      -->
     </div>
 </div>
 <% }) %>

@@ -5,7 +5,14 @@
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
         <meta charset="UTF-8" /> 
         <meta name="title" content="Car Share"/>
+          <style>
+        .error {
+            border-color: red;
+        }
 
+    </style>
+
+          </style>
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -19,15 +26,15 @@
             style="width: 400px">
             
             <div class="center">
-                <form class="form_block" >
+                <form class="form_block" action="/check-plogin" method="POST" >
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email адреса</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Унесите email адресу" >
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name= 'email' placeholder="Унесите email адресу" >
                      <br>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Лозинка</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Унесите лозинку">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Унесите лозинку">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Пријава</button>
@@ -50,59 +57,46 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="/register" method="POST">
+                    <form action="/register" method="POST" onsubmit="return validateForm()">
 
-                      <form>
+                      
                         <div class="row">
 
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Име">
+                              <input type="text" id="ime" name="ime" class="form-control" placeholder="Име">
                             </div>
 
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Презиме">
+                              <input type="text" id="prezime" name="prezime" class="form-control" placeholder="Презиме">
                             </div>
 
                         </div>
-                      </form>
                         <br>
-                        <form>
+                        
+                          
                           <div class="row">
-                            <input type="text" class="form-control" placeholder="Корисничко име">
+                            <input id="email" name="email" type="email" class="form-control" placeholder="Email адреса">
                           </div>
-                        </form>
-                        <br>
-                        <form>
-                          <div class="row">
-                            <input type="text" class="form-control" placeholder="Email адреса">
-                          </div>
-                        </form>
 
                         <br>
-                        <form>
                           <div class="row">
-                            <input type="text" class="form-control" placeholder="Број телефона">
+                            <input type="text" id="br_telefona" name="br_telefona" class="form-control" placeholder="Број телефона">
                           </div>
-                        </form>
 
                         <br>
-                        <form>
                           <div class="row">
-                            <input type="text" class="form-control" placeholder="Место пребивалишта">
+                            <input type="text" id="prebivaliste" name="prebivaliste" class="form-control" placeholder="Место пребивалишта">
                           </div>
-                        </form>
                         <br>
-                        <form>
                           <div class="row">
                               <div class="col">
-                                <input type="text" class="form-control" placeholder="Лозинка">
+                                <input type="password" id="passwordR" name="passwordR" class="form-control" onkeyup='check();'  placeholder="Лозинка">
                               </div>
                               <div class="col">
-                                <input type="text" class="form-control" placeholder="Поновна лозинка">
+                                <input type="password" id="confirmPasswordR" name="confirmPasswordR" onkeyup='check();' class="form-control" placeholder="Поновна лозинка">
                               </div>
-  
+                              <span id='message'></span>
                           </div>
-                        </form>
                         <br>
                         <button type="submit" class="btn btn-primary">Региструј се</button>
                     </form>
@@ -112,5 +106,39 @@
     </div>
               </div>
           </div>
+          <script>
+            var check = function() {
+            if (document.getElementById('passwordR').value ==
+              document.getElementById('confirmPasswordR').value) {
+              document.getElementById('message').style.color = 'green';
+              document.getElementById('message').innerHTML = '';
+            } else {
+              document.getElementById('message').style.color = 'red';
+              document.getElementById('message').innerHTML = 'ne poklapaju se lozinke';
+            }
+          }
+          var validateForm = function() {
+            var ime = document.getElementById('ime').value.trim();
+            var prezime = document.getElementById('prezime').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var br_telefona = document.getElementById('br_telefona').value.trim();
+            var prebivaliste = document.getElementById('prebivaliste').value.trim();
+            var password = document.getElementById('passwordR').value;
+            var confirmPassword = document.getElementById('confirmPasswordR').value;
+
+            if (ime === '' || prezime === '' || email === '' || br_telefona === '' || prebivaliste === '') {
+                alert('Sva polja moraju biti popunjena!');
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Lozinke se ne poklapaju!');
+                return false;
+            }
+
+            // Ako sve provjere prođu, forma će se poslati na backend
+            return true;
+        }
+        </script>
     </body>
 </html>

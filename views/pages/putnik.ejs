@@ -37,7 +37,7 @@
                                 <a class="nav-link" href="#">Измена профила</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Одјава</a>
+                                <a class="nav-link" href="/logoutp">Одјава</a>
                             </li>
                         </ul>
                     </div>
@@ -46,61 +46,24 @@
         </header>
         <br>
         <br>
-        <div class="card mt-4">
-            <div class="card-body">
-              <h5 class="card-title">Београд-Рашка </h5>
-              <p class="card-text">
-                Возач: Никола Даниловић
-               </p>
-              <p class="card-text">
-                Датум поласка: 18.06.2024.
-               </p>
-              <p class="card-text">
-               Време поласка: 18:00
-              </p>
-              <p class="card-text">
-                Mесто поласка: аутокоманда
-               </p>
-               <p class="card-text">
-                Број слободних места је: 2
-               </p>
-               <p class="card-text">
-                Цена по особи је: 700 динара 
-               </p>
-              <form class="form-inline">
-                <button class="btn btn-outline-success" type="button">Пријави се за вожњу</button>
-                <button class="btn btn-outline-success" type="button">Одјави се од вожње</button>
-              </form>
-            </div>
-          </div>
+        <div class="container mt-4">
+          <% voznje.forEach(function(voznja) { %>
           <div class="card mt-4">
             <div class="card-body">
-              <h5 class="card-title">Београд-Рашка </h5>
-              <p class="card-text">
-                Возач: Никола Даниловић
-               </p>
-              <p class="card-text">
-                Датум поласка: 18.06.2024.
-               </p>
-              <p class="card-text">
-               Време поласка: 18:00
-              </p>
-              <p class="card-text">
-                Mесто поласка: аутокоманда
-               </p>
-               <p class="card-text">
-                Број слободних места је: 2
-               </p>
-               <p class="card-text">
-                Цена по особи је: 700 динара 
-               </p>
+              <h5 class="card-title"><%= voznja.pocetna_destinacija %> - <%= voznja.krajnja_destinacija %></h5>
+              <p class="card-text">Датум поласка: <%= new Date(voznja.Datum_i_vreme_polaska).toLocaleDateString() %></p>
+              
+              <p class="card-text">Mесто поласка: <%= voznja.mesto_polaska %></p>
+              <p class="card-text">Број слободних места је: <%= voznja.Broj_mesta %></p>
+              <p class="card-text">Цена по особи је: <%= voznja.Cena %> динара</p>
               <form class="form-inline">
                 <button class="btn btn-outline-success" type="button">Пријави се за вожњу</button>
                 <button class="btn btn-outline-success" type="button">Одјави се од вожње</button>
               </form>
             </div>
           </div>
-        
+          <% }) %>
+        </div>
             
 
     </body>

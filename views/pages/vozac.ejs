@@ -10,14 +10,13 @@
           <nav class="navbar navbar-light" style="background-color: rgb(133, 235, 235);">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Возач</a>
-                    <form class="form-inline">
-                        
-                        <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal" data-bs-toggle="modal" >Додај вожњу</button>
-                        <form action="/logout" method="GET">
-                             <button class="btn btn-outline-success" type="submit">Одјава</button>
+                    <div class="btn-group" role="group" aria-label="Actions">
+                        <form action="/logoutva" method="GET">
+                          <button class="btn btn-outline-success" type="button" data-bs-target="#exampleModal" data-bs-toggle="modal">Додај вожњу</button>
+                          <button class="btn btn-outline-success" type="submit">Одјава</button>
                         </form>
+                      </div>
                        
-                      </form>
                 </div>
             </nav>
            
@@ -36,7 +35,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/add-voznja" method="POST">
+                    <form action="/add-voznja?vozac_id=<%= userid %>"  method="POST">
                         <div class="row">
                             <div class="col">
                                 <input type="text" name="startDestination" class="form-control" placeholder="Почетна дестинација" required>
